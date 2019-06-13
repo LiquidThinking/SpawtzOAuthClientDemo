@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <img class="img img-responsive" src="https://spawtz.com/Content/images/LogoAthleteSmall.png" />
+    <hr/>
+
+    <p>Click the button below to view your Role/Permissions within Spawtz - you may be asked to log in to Spawtz before being redirected back to this site.</p>
+    <button class="btn btn-primary btn-lg">View my Roles & Permissions!</button>
+</div>
+
+@section scripts{
+    <script>
+        $('button').click(function() {
+            window.location.href = '/SpawtzPermissions';
+        });
+    </script>
+}

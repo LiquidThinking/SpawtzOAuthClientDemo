@@ -1,0 +1,67 @@
+﻿@model SpawtzOAuthClientDemo.Web.Controllers.SpawtzPermissions
+@{
+    ViewBag.Title = "Spawtz Permissions";
+}
+
+<style>
+    dd { padding-left: 10px; }
+</style>
+
+<div class="container">
+    <div class="row">
+        <h2>
+            Spawtz Roles & Permissions
+            <br/>
+            <small>
+                Here are all the things you can do in Spawtz!
+            </small>
+        </h2>
+    </div>
+
+    <div class="row">
+        <dl>
+            <dt>Security Role</dt>
+            <dd>@Model.Role</dd>
+            <dt>Description</dt>
+            <dd>@Model.RoleDescription</dd>
+            <dt>Level</dt>
+            <dd>@Model.Level</dd>
+        </dl>
+
+        @if ( Model.SecurityRoleAssociatedItems.Any() )
+        {
+            <h4>Security Role Associated Items</h4>
+            <ul>
+                @foreach ( var securityRoleItem in Model.SecurityRoleAssociatedItems )
+                {
+                    <li>@securityRoleItem.Name ( #@securityRoleItem.Id )</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>You do not have any security role associated items</p>
+        }
+    </div>
+
+    @if ( Model.Permissions.Any() )
+    {
+        <h4>Permissions</h4>
+        <ul>
+            @foreach ( var permisison in Model.Permissions )
+            {
+                <li>@permisison.Key</li>
+                <ul>
+                    @foreach ( var value in permisison.Value )
+                    {
+                        <li>@value</li>
+                    }
+                </ul>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>You do not have any specific permissions</p>
+    }
+</div>
